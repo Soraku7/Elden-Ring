@@ -3,8 +3,13 @@ using UnityEngine;
 
 public class CharacterManager : MonoBehaviour
 {
-    private void Awake()
+    protected virtual void Awake()
     {
         DontDestroyOnLoad(this);
+    }
+
+    protected virtual void Update()
+    {
+        
     }
 }
