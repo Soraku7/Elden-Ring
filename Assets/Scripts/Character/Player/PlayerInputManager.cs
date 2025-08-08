@@ -66,6 +66,21 @@ public class PlayerInputManager : MonoBehaviour
         HandleMovementInput();
     }
 
+    private void OnApplicationFocus(bool hasFocus)
+    {
+        if (enabled)
+        {
+            if (hasFocus)
+            {
+                _playerControl.Enable();
+            }
+            else
+            {
+                _playerControl.Disable();
+            }
+        }
+    }
+
     private void OnDestroy()
     {
         SceneManager.activeSceneChanged -= OnSceneChange;

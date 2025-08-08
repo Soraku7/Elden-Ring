@@ -67,6 +67,9 @@ PrefabInstance:
       addedObject: {fileID: 6120032394162258723}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 972248919304382766}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 534418680486600115}
   m_SourcePrefab: {fileID: 100100000, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
 --- !u!1 &6289220921557434445 stripped
@@ -125,6 +128,22 @@ MonoBehaviour:
   moveAmount: 0
   walkingSpeed: 2
   runningSpeed: 5
+--- !u!114 &972248919304382766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289220921557434445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a4f0026f2f39a04492ab434cb35f235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkPosition:
+    m_InternalValue: {x: 0, y: 0, z: 0}
+  networkPositionVelocity: {x: 0, y: 0, z: 0}
+  networkPositionSmoothTime: 0.1
 --- !u!143 &534418680486600115
 CharacterController:
   m_ObjectHideFlags: 0
