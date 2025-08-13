@@ -58,6 +58,10 @@ public class PlayerLocomotionManager : CharacterLocomotionManager
         _targetRotationDirection = PlayerCamera.instance.cameraObject.transform.forward * verticalMovement;
         _targetRotationDirection = _targetRotationDirection + PlayerCamera.instance.cameraObject.transform.right * horizontalMovement;
         
+        //防止摄像机移动时改变玩家移动过上下朝向
+        _targetRotationDirection.Normalize();
+        _targetRotationDirection.y = 0;
+        
         if(_targetRotationDirection == Vector3.zero) _targetRotationDirection = transform.forward;
 
         Quaternion newRotation = Quaternion.LookRotation(_targetRotationDirection);

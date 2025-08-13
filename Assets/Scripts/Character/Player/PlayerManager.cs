@@ -19,4 +19,24 @@ public class PlayerManager : CharacterManager
         
         playerLocomotionManager.HandleAllMovement();
     }
+
+    protected override void LateUpdate()
+    {
+        if (!IsOwner) return;
+        
+        base.LateUpdate();
+        
+        PlayerCamera.instance.HandleAllCameraActions();
+    }
+
+    //当对象生成时调用
+    public override void OnNetworkSpawn()
+    {
+        base.OnNetworkDespawn();
+
+        if (IsOwner)
+        {
+            PlayerCamera.instance.player = this;
+        }
+    }
 }
