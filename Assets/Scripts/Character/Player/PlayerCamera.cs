@@ -16,12 +16,17 @@ public class PlayerCamera : MonoBehaviour
     [SerializeField] private float upAndDownRotationSpeed = 220f;
     [SerializeField] private float minimumPivot = -30f;
     [SerializeField] private float maximumPivot = 60f;
+    [SerializeField] private float cameraCollisionRadius = 0.2f;
+    [SerializeField] LayerMask collideWithLayers;
     
     [Header("Camera Values")]
     private Vector3 _cameraVelocity;
+    private Vector3 _cameraObjectPosition;
 
     [SerializeField] private float leftAndRightLookingAngle;
     [SerializeField] private float upAndDownLookingAngle;
+    private float _cameraZPosition;
+    private float _targetCameraZPosition;
 
     private void Awake()
     {
@@ -38,6 +43,7 @@ public class PlayerCamera : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
+        _cameraZPosition = cameraObject.transform.localPosition.z;
     }
     
     public void HandleAllCameraActions()
@@ -46,6 +52,7 @@ public class PlayerCamera : MonoBehaviour
         {
             HandleFollowPlayer();
             HandleRotations();
+            HandleCollisions();
         }
     }
 
@@ -75,5 +82,31 @@ public class PlayerCamera : MonoBehaviour
         cameraRotation.x = upAndDownLookingAngle;
         targetRotation = Quaternion.Euler(cameraRotation);
         cameraPivotTransform.localRotation = targetRotation;
+    }
+    
+    
+    private void HandleCollisions()
+    {
+        _targetCameraZPosition = _cameraZPosition;
+        RaycastHit hit;
+        Vector3 direction = cameraObject.transform.position - cameraPivotTransform.position;
+        direction.Normalize();
+
+        //拿到摄像机发出射线前方物体
+        if (Physics.SphereCast(cameraPivotTransform.position, cameraCollisionRadius, direction, out hit,
+                Mathf.Abs(_targetCameraZPosition) , collideWithLayers))
+        {
+            float distanceFromHitObject = Vector3.Distance(cameraPivotTransform.position, hit.point);
+            _targetCameraZPosition = -(distanceFromHitObject - cameraCollisionRadius);
+        }
+        
+        //判断物体距离是否超过默认摄像机位置
+        if(Mathf.Abs(_targetCameraZPosition) < _cameraZPosition)
+        {
+            _targetCameraZPosition = -_cameraZPosition;
+        }
+        
+        _cameraObjectPosition.z = Mathf.Lerp(cameraObject.transform.localPosition.z, _targetCameraZPosition, 0.2f);
+        cameraObject.transform.localPosition = _cameraObjectPosition;
     }
 }

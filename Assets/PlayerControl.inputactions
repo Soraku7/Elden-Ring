@@ -203,7 +203,7 @@
                     "id": "5d4bcd3a-ced1-4696-a437-bf561a617241",
                     "path": "2DVector(mode=2)",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "ScaleVector2(x=0.1,y=0.1)",
                     "groups": "",
                     "action": "Camera Controls",
                     "isComposite": true,
