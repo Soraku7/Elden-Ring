@@ -7,6 +7,7 @@ public class PlayerInputManager : MonoBehaviour
 {
     public static PlayerInputManager instance;
     
+    public PlayerManager player;
     private PlayerControl _playerControl;
 
     [Header("Movement Input")]
@@ -109,6 +110,11 @@ public class PlayerInputManager : MonoBehaviour
         {
             moveAmount = 1f;
         }
+        
+        if(player == null) return;
+        
+        //玩家没有锁定目标 角色移动都是面向移动方向的
+        player.playerAnimatorManager.UpdateAnimatorMovementParameters(0 , moveAmount);
     }
 
     private void HandleCameraInput()

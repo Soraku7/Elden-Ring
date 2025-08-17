@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerManager : CharacterManager
 {
-    private PlayerLocomotionManager playerLocomotionManager;
+     [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
+     [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
     
     protected override void Awake()
     {
         base.Awake();
         
         playerLocomotionManager = GetComponent<PlayerLocomotionManager>();
+        playerAnimatorManager = GetComponent<PlayerAnimatorManager>();
     }
 
     protected override void Update()
@@ -37,6 +40,7 @@ public class PlayerManager : CharacterManager
         if (IsOwner)
         {
             PlayerCamera.instance.player = this;
+            PlayerInputManager.instance.player = this;
         }
     }
 }

@@ -58,6 +58,12 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 534418680486600115}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7100792527730003374}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 4820380253322534463}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
       insertIndex: -1
@@ -70,13 +76,60 @@ PrefabInstance:
       addedObject: {fileID: 972248919304382766}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 534418680486600115}
+      addedObject: {fileID: 3556580060666513715}
   m_SourcePrefab: {fileID: 100100000, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
 --- !u!1 &6289220921557434445 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 47cbde78cb6ade548ba48556b5acdf68, type: 3}
   m_PrefabInstance: {fileID: 6595139895502568732}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &534418680486600115
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289220921557434445}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 1.79
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!95 &7100792527730003374
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289220921557434445}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 0ad932253e8dc8841948afa5d1a0d051, type: 3}
+  m_Controller: {fileID: 9100000, guid: 54380608792891a488db48da0d1382e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &4820380253322534463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +181,7 @@ MonoBehaviour:
   moveAmount: 0
   walkingSpeed: 2
   runningSpeed: 5
+  rotationSpeed: 15
 --- !u!114 &972248919304382766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,30 +196,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   networkPosition:
     m_InternalValue: {x: 0, y: 0, z: 0}
+  networkRotation:
+    m_InternalValue: {x: 0, y: 0, z: 0, w: 1}
   networkPositionVelocity: {x: 0, y: 0, z: 0}
   networkPositionSmoothTime: 0.1
---- !u!143 &534418680486600115
-CharacterController:
+  networkRotationSmoothTime: 0.1
+--- !u!114 &3556580060666513715
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6289220921557434445}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.79
-  m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae0101bb185ffd145a4be30ae90ca7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
